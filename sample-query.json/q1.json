@@ -1,0 +1,29 @@
+mutation {
+  createTweet(input: {authorId:"5976e82c93d1ffe16e806a6a",text:"first tweet second"}) {
+    id
+    author {
+      id
+    }
+  
+  }
+}
+
+query {
+  users {
+    id
+    email
+    tweets {
+      id
+      text
+    }
+  }
+}
+
+query {
+  tweets {
+    id
+    author {
+      id
+    }
+  }
+}

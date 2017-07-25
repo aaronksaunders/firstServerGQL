@@ -1,0 +1,34 @@
+type Tweet {
+  id: ObjID!
+  author: User!
+  text: String
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  tweets(lastCreatedAt: Float, limit: Int): [Tweet!]
+  tweet(id: ObjID!): Tweet
+}
+
+input CreateTweetInput {
+  authorId: ObjID!
+  text: String
+}
+
+input UpdateTweetInput {
+  authorId: ObjID!
+  text: String
+}
+
+extend type Mutation {
+  createTweet(input: CreateTweetInput!): Tweet
+  updateTweet(id: ObjID!, input: UpdateTweetInput!): Tweet
+  removeTweet(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  tweetCreated: Tweet
+  tweetUpdated: Tweet
+  tweetRemoved: ObjID
+}

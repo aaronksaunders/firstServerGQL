@@ -1,0 +1,4 @@
+type Tweet {
+  author: User!
+  text: String
+}
